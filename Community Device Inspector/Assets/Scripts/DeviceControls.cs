@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +13,7 @@ public class DeviceControls : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        foreach (var deviceControl in device.allControls)
+        foreach (var deviceControl in device.children)
         {
             var deviceInput = Instantiate(_deviceInputLinePrefab, _container);
             deviceInput.SetControls(deviceControl);
