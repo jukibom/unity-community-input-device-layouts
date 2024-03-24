@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using System.Linq;
-using DefaultNamespace;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -75,15 +73,6 @@ namespace CommunityDeviceInspector
             {
                 int deviceIndex = InputSystem.devices.IndexOf(device => device.name.Equals(currentName));
                 _dropdown.value = deviceIndex + 1;
-            }
-        }
-
-        private void Update()
-        {
-            if (_currentDevice != null)
-            {
-                var state = DeviceRawStateQuery.StateForDevice(_currentDevice, Endian.Little);
-                Debug.Log(state.binaryString);
             }
         }
     }

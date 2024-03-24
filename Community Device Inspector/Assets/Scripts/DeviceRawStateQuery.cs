@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine.InputSystem;
 
-namespace DefaultNamespace
+namespace CommunityDeviceInspector
 {
     public struct InputFrame
     {
