@@ -6,6 +6,7 @@ namespace CommunityDeviceInspector
 {
     public class DeviceInspector : MonoBehaviour
     {
+        [SerializeField] private ByteOffsetDataView _offsetDataView;
         [SerializeField] private List<ByteDataView> _dataViews;
 
         private InputFrame _state;
@@ -22,6 +23,7 @@ namespace CommunityDeviceInspector
 
         private void RefreshDataVisualisation()
         {
+            _offsetDataView.ByteCount = _state.rawBytes.Length;
             foreach (var byteDataView in _dataViews)
             {
                 byteDataView.Data = _state.rawBytes;

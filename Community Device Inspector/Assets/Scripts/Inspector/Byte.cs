@@ -9,7 +9,6 @@ namespace CommunityDeviceInspector
     {
 
         [SerializeField] protected List<Digit> _digits;
-        [SerializeField] protected TMP_Text _offsetLabel;
 
         protected byte _byteData;
 
@@ -21,12 +20,6 @@ namespace CommunityDeviceInspector
                 _byteData = value;
                 RefreshDigits();
             }
-        }
-
-        public int Offset
-        {
-            get => int.Parse(_offsetLabel.text);
-            set => _offsetLabel.text = value.ToString(CultureInfo.InvariantCulture);
         }
 
         protected virtual void RefreshDigits()

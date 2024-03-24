@@ -1,22 +1,23 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CommunityDeviceInspector
 {
-    public class ByteDataView : MonoBehaviour
+    public class ByteOffsetDataView : MonoBehaviour
     {
-        [SerializeField] private Byte _bytePrefab;
+        [SerializeField] private OffsetLabel _offsetLabelPrefab;
         [SerializeField] private Transform _container;
 
-        [CanBeNull] private Byte[] _binaryBytes;
+        [CanBeNull] private OffsetLabel[] _binaryBytes;
         
-        private byte[] _data;
-        public byte[] Data
+        private int _byteCount;
+        public int ByteCount
         {
-            get => _data;
+            get => _byteCount;
             set
             {
-                _data = value;
+                _byteCount = value;
                 RefreshData();
             }
         }
@@ -25,16 +26,16 @@ namespace CommunityDeviceInspector
         {
             // get number of children in container
             int childCount = _container.childCount;
-            if (childCount != _data.Length)
+            if (childCount != _byteCount)
             {
                 RebuildContainer();
             }
 
-            if (_binaryBytes != null && _binaryBytes.Length == _data.Length)
+            if (_binaryBytes != null && _binaryBytes.Length == _byteCount)
             {
-                for (var i = 0; i < _data.Length; i ++)
+                for (var i = 0; i < _byteCount; i ++)
                 {
-                    _binaryBytes[i].Value = _data[i];
+                    _binaryBytes[i].Offset = i;
                 }
             }
         }
@@ -46,13 +47,13 @@ namespace CommunityDeviceInspector
                 Destroy(child.gameObject);
             }
 
-            _binaryBytes = new Byte[_data.Length];
+            _binaryBytes = new OffsetLabel[_byteCount];
             
-            for (int i = 0; i < _data.Length; i++)
+            for (int i = 0; i < _byteCount; i++)
             {
-                Byte byteVisualisation = Instantiate(_bytePrefab, _container);
+                OffsetLabel byteVisualisation = Instantiate(_offsetLabelPrefab, _container);
                 _binaryBytes[i] = byteVisualisation;
-                byteVisualisation.Value = _data[i];
+                byteVisualisation.Offset = i;
             }
         }
     }
