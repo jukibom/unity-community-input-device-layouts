@@ -180,8 +180,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 2147483647
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.49803922}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63605d81f5e687c4c9ec344f806b8476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _binaryDigits:
+  _digits:
   - {fileID: 7832739942913388974}
   - {fileID: 7714704007331821308}
   - {fileID: 3310627614257807866}

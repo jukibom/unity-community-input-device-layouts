@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace CommunityDeviceInspector
 {
     public class DeviceInspector : MonoBehaviour
     {
-        [SerializeField] private BinaryDataView _binaryDataView;
+        [SerializeField] private List<ByteDataView> _dataViews;
 
         private InputFrame _state;
 
@@ -20,7 +22,10 @@ namespace CommunityDeviceInspector
 
         private void RefreshDataVisualisation()
         {
-            _binaryDataView.Data = _state.rawBytes;
+            foreach (var byteDataView in _dataViews)
+            {
+                byteDataView.Data = _state.rawBytes;
+            }
         }
     }
 }

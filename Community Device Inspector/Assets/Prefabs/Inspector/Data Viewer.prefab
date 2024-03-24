@@ -98,8 +98,8 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_fontStyle: 17
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 12, y: 10, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -144,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 857010400325966223}
   - component: {fileID: 7869590294901037367}
+  - component: {fileID: 7054714647222060091}
   m_Layer: 5
   m_Name: Data Viewer
   m_TagString: Untagged
@@ -198,6 +199,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &7054714647222060091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7130858591837158994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 984ac0276fb160541a4defd073bd3bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bytePrefab: {fileID: 0}
+  _container: {fileID: 6635410704974108671}
 --- !u!1 &7589942118764340493
 GameObject:
   m_ObjectHideFlags: 0

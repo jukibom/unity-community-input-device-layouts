@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace CommunityDeviceInspector
 {
-    public class BinaryDataView : MonoBehaviour
+    public class ByteDataView : MonoBehaviour
     {
-        [SerializeField] private BinaryByte _binaryBytePrefab;
+        [SerializeField] private Byte _bytePrefab;
         [SerializeField] private Transform _container;
 
-        [CanBeNull] private BinaryByte[] _binaryBytes;
+        [CanBeNull] private Byte[] _binaryBytes;
         
         private byte[] _data;
         public byte[] Data
@@ -46,14 +46,14 @@ namespace CommunityDeviceInspector
                 Destroy(child.gameObject);
             }
 
-            _binaryBytes = new BinaryByte[_data.Length];
+            _binaryBytes = new Byte[_data.Length];
             
             for (int i = 0; i < _data.Length; i++)
             {
-                BinaryByte binaryByte = Instantiate(_binaryBytePrefab, _container);
-                _binaryBytes[i] = binaryByte;
-                binaryByte.Value = _data[i];
-                binaryByte.Offset = i;
+                Byte byteVisualisation = Instantiate(_bytePrefab, _container);
+                _binaryBytes[i] = byteVisualisation;
+                byteVisualisation.Value = _data[i];
+                byteVisualisation.Offset = i;
             }
         }
     }
