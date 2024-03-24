@@ -1,61 +1,74 @@
 using System.Linq;
+using DefaultNamespace;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DeviceSelector : MonoBehaviour
+namespace CommunityDeviceInspector
 {
-    public delegate void DeviceSelected(InputDevice device);
-
-    public event DeviceSelected OnDeviceSelected;
-
-    [SerializeField] private TMP_Dropdown _dropdown;
-
-    [CanBeNull] private InputDevice _currentDevice;
-
-    private void Start()
+    public class DeviceSelector : MonoBehaviour
     {
-        DetectDevices();
-    }
+        public delegate void DeviceSelected(InputDevice device);
 
-    private void OnEnable()
-    {
-        InputSystem.onDeviceChange += OnConnectedDevicesChange;
-        _dropdown.onValueChanged.AddListener(OnDropdownDeviceSelected);
-    }
-    
+        public event DeviceSelected OnDeviceSelected;
 
-    private void OnDisable()
-    {
-        InputSystem.onDeviceChange -= OnConnectedDevicesChange;
-        _dropdown.onValueChanged.RemoveListener(OnDropdownDeviceSelected);
-    }
+        [SerializeField] private TMP_Dropdown _dropdown;
 
-    private void OnConnectedDevicesChange(InputDevice _, InputDeviceChange change)
-    {
-        if (change is not (InputDeviceChange.Added or InputDeviceChange.Removed)) return;
+        [CanBeNull] private InputDevice _currentDevice;
 
-        DetectDevices();
-    }
-
-    private void OnDropdownDeviceSelected(int index)
-    {
-        _currentDevice = InputSystem.devices[index];
-        OnDeviceSelected?.Invoke(_currentDevice);
-    }
-
-    private void DetectDevices()
-    {
-        var currentName = _currentDevice?.name ?? "";
-        _dropdown.ClearOptions();
-        _dropdown.AddOptions(
-            InputSystem.devices.Select(device => new TMP_Dropdown.OptionData(device.name)).ToList());
-
-        if (!string.IsNullOrEmpty(currentName))
+        private void Start()
         {
-            int currentIndex = InputSystem.devices.IndexOf(device => device.name.Equals(currentName));
-            _dropdown.value = currentIndex;
+            DetectDevices();
+        }
+
+        private void OnEnable()
+        {
+            InputSystem.onDeviceChange += OnConnectedDevicesChange;
+            _dropdown.onValueChanged.AddListener(OnDropdownDeviceSelected);
+        }
+
+
+        private void OnDisable()
+        {
+            InputSystem.onDeviceChange -= OnConnectedDevicesChange;
+            _dropdown.onValueChanged.RemoveListener(OnDropdownDeviceSelected);
+        }
+
+        private void OnConnectedDevicesChange(InputDevice _, InputDeviceChange change)
+        {
+            if (change is not (InputDeviceChange.Added or InputDeviceChange.Removed)) return;
+
+            DetectDevices();
+        }
+
+        private void OnDropdownDeviceSelected(int index)
+        {
+            _currentDevice = InputSystem.devices[index];
+            OnDeviceSelected?.Invoke(_currentDevice);
+        }
+
+        private void DetectDevices()
+        {
+            var currentName = _currentDevice?.name ?? "";
+            _dropdown.ClearOptions();
+            _dropdown.AddOptions(
+                InputSystem.devices.Select(device => new TMP_Dropdown.OptionData(device.name)).ToList());
+
+            if (!string.IsNullOrEmpty(currentName))
+            {
+                int currentIndex = InputSystem.devices.IndexOf(device => device.name.Equals(currentName));
+                _dropdown.value = currentIndex;
+            }
+        }
+
+        private void Update()
+        {
+            if (_currentDevice != null)
+            {
+                var state = DeviceRawStateQuery.StateForDevice(_currentDevice, Endian.Little);
+                Debug.Log(state.binaryString);
+            }
         }
     }
 }

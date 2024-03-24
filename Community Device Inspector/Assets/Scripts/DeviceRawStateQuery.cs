@@ -11,10 +11,16 @@ namespace DefaultNamespace
         public string hexString;
         public string binaryString;
     }
+
+    public enum Endian
+    {
+        Little,
+        Big
+    }
     
     public static class DeviceRawStateQuery
     {
-        public static InputFrame StateForDevice(InputDevice inputDevice)
+        public static InputFrame StateForDevice(InputDevice inputDevice, Endian endian = Endian.Big)
         {
             unsafe
             {
@@ -23,9 +29,14 @@ namespace DefaultNamespace
                 inputDevice.ReadValueIntoBuffer(buffer, inputDevice.valueSizeInBytes);
                 
                 byte[] rawBytes = new byte[inputDevice.valueSizeInBytes];
-                System.Runtime.InteropServices.Marshal.Copy((System.IntPtr)buffer, rawBytes, 0,
+                System.Runtime.InteropServices.Marshal.Copy((IntPtr)buffer, rawBytes, 0,
                     inputDevice.valueSizeInBytes);
                 
+                // Pretty sure this always comes in at Big Endian ... I hope
+                if (endian == Endian.Little) Array.Reverse(rawBytes);
+                
+                // Simplified representations for sanity
+                // TODO: maybe shunt these to helper functions?
                 var decimalString = string.Join(", ", rawBytes);
                 string hexString = string.Join(" ", rawBytes.Select(b => b.ToString("X2")));
                 string binaryString = string.Join(" ", rawBytes.Select(b => Convert.ToString(b, 2).PadLeft(8, '0')));

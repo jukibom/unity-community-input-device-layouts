@@ -2,11 +2,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DeviceInput : MonoBehaviour
+namespace CommunityDeviceInspector
 {
-    [SerializeField] private TMP_Text _inputControlName;
-    public void SetControls(InputControl inputControl)
+    public class DeviceInput : MonoBehaviour
     {
-        _inputControlName.text = $"{inputControl.name} {inputControl.valueType.Name} {inputControl.GetType()} {inputControl.stateBlock.format} {inputControl.stateBlock.bitOffset} {inputControl.stateBlock.byteOffset} {inputControl.stateBlock.sizeInBits} {inputControl.layout}";
+        [SerializeField] private TMP_Text _inputControlName;
+
+        public void SetControls(InputControl inputControl)
+        {
+            _inputControlName.text =
+                $"{inputControl.name} {inputControl.valueType.Name} {inputControl.GetType()} {inputControl.stateBlock.format} {inputControl.stateBlock.bitOffset} {inputControl.stateBlock.byteOffset} {inputControl.stateBlock.sizeInBits} {inputControl.layout}";
+        }
     }
 }
