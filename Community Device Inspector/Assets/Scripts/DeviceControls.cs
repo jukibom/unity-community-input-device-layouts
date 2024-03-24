@@ -10,15 +10,19 @@ namespace CommunityDeviceInspector
 
         public void Refresh(InputDevice device)
         {
-            foreach (Transform child in _container)
-            {
-                Destroy(child.gameObject);
-            }
 
             foreach (var deviceControl in device.children)
             {
                 var deviceInput = Instantiate(_deviceInputLinePrefab, _container);
                 deviceInput.SetControls(deviceControl);
+            }
+        }
+
+        public void Clear()
+        {
+            foreach (Transform child in _container)
+            {
+                Destroy(child.gameObject);
             }
         }
     }

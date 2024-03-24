@@ -19,8 +19,13 @@ namespace CommunityDeviceInspector
         }
 
         private void OnDeviceSelected(InputDevice device)
+        private void OnDeviceSelected([CanBeNull] InputDevice device)
         {
-            _deviceControls.Refresh(device);
+            _deviceControls.Clear();
+            if (device != null)
+            {
+                _deviceControls.Refresh(device);
+            }
         }
     }
 }

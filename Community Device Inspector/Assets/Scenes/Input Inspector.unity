@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deviceSelector: {fileID: 1974924157}
-  _deviceControls: {fileID: 0}
+  _deviceControls: {fileID: 197058511}
 --- !u!1 &812382829
 GameObject:
   m_ObjectHideFlags: 0
@@ -1445,6 +1445,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5464236359473894895, guid: f12341470dbfd314382ad4c9680183d6, type: 3}
   m_PrefabInstance: {fileID: 1525748352}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1759138456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 885161953158797307, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
+  m_PrefabInstance: {fileID: 710319762652701126}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1760754186 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5464236359473894895, guid: f12341470dbfd314382ad4c9680183d6, type: 3}
@@ -1533,22 +1544,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896944816}
   m_CullTransparentMesh: 1
+--- !u!1 &1974924151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8607578107748011774, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
+  m_PrefabInstance: {fileID: 710319762652701126}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1974924152 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8444663880180376319, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
   m_PrefabInstance: {fileID: 710319762652701126}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1974924157 stripped
+--- !u!114 &1974924153 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8974948779687642380, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7696102506765961773, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
   m_PrefabInstance: {fileID: 710319762652701126}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1974924151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1974924157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974924151}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 903250fae7278d24891d6d9be0283742, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dropdown: {fileID: 1974924153}
 --- !u!1 &2143087612 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6686430547677216911, guid: 978d3bca8aa46e240b1503bfb726bbee, type: 3}
@@ -1570,6 +1599,10 @@ PrefabInstance:
     - target: {fileID: 674518176999998195, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -7.5001526
+      objectReference: {fileID: 0}
+    - target: {fileID: 885161953158797307, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
+      propertyPath: m_text
+      value: Select Device ...
       objectReference: {fileID: 0}
     - target: {fileID: 7696102506765961773, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
       propertyPath: m_Options.m_Options.Array.size
@@ -1663,10 +1696,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Device Selector Dropdown
       objectReference: {fileID: 0}
+    - target: {fileID: 8974948779687642380, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
+      propertyPath: _label
+      value: 
+      objectReference: {fileID: 1759138456}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8607578107748011774, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1974924157}
   m_SourcePrefab: {fileID: 100100000, guid: fb214498bf1c543479c8d9953e194a81, type: 3}
 --- !u!1001 &1432142413195181023
 PrefabInstance:
