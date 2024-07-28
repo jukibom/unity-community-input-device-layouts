@@ -10,10 +10,10 @@ namespace CommunityDeviceInspector
 
         public void Refresh(InputDevice device)
         {
-
             foreach (var deviceControl in device.children)
             {
                 var deviceInput = Instantiate(_deviceInputLinePrefab, _container);
+                deviceInput.Initialize(_deviceInputLinePrefab);
                 deviceInput.SetControls(deviceControl);
             }
         }
