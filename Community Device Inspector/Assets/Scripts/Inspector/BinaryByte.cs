@@ -1,3 +1,5 @@
+using System;
+
 namespace CommunityDeviceInspector
 {
     public class BinaryByte : Byte
@@ -5,9 +7,12 @@ namespace CommunityDeviceInspector
         protected override void RefreshDigits()
         {
             // break byte into binary values
-            for (int i = 0; i < _digits.Count; i++)
+            for (var i = 0; i < _digits.Count; i++)
             {
-                _digits[i].Value = ((_byteData >> i) & 1).ToString();
+                _digits[i].Value = Convert
+                    .ToString(_byteData, 2)
+                    .PadLeft(8, '0')[i]
+                    .ToString();
             }
         }
     }
